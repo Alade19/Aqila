@@ -30,7 +30,7 @@ export default function Page() {
             <p className='text-[#001F22] dark:text-[#ffffff] font-[600] text-[16px] h-fit my-auto'>Contact Us</p>
           </div>
           <p className='text-[#001F22] dark:text-[#ffffff] font-[400] text-[14px] lg:text-[16px] my-4 lg:my-3 lg:leading-6'>Got a question? Send it our way!  The Aqila <br className='lg:hidden' /> team <br className='hidden lg:block' />will get back to you as soon as possible.</p>
-          <p className='text-[#001F22] dark:text-[#ffffff] font-[400] text-[14px] lg:text-[16px]'>We'll respond to you at: <span className='font-[600]'>johndoe@gmail.com</span></p>
+          <p className='text-[#001F22] dark:text-[#ffffff] font-[400] text-[14px] lg:text-[16px]'>We will respond to you at: <span className='font-[600]'>johndoe@gmail.com</span></p>
 
           <div className='w-full flex flex-col gap-1 mt-6'> 
             <label htmlFor="message-purpose" className='text-[#303030] dark:text-[#ffffff] text-[10px] lg:text-[12px] font-[600]'>Kindly specify the purpose of your message.</label>

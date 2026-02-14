@@ -19,7 +19,7 @@ import { useTheme } from "next-themes";
 import { DeckListSkeleton } from "../core/lib/skeletons";
 import { deleteDeckAction } from "@/app/core/services/actions/userActions";
 import { toast } from "sonner";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 
 

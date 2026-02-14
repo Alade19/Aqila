@@ -46,7 +46,7 @@ export default function SuccessModal() {
           You killed it scholar 🎉
         </h1>
         <p className='text-[#303030] dark:text-[#ffffff] text-[12px] w-[214px] lg:text-[16px] lg:w-[355px] mt-[16px] font-[400] leading-4 lg:leading-6 text-center'>
-          You've successfully learned this material. To reinforce your knowledge, you can review your flashcards again
+          You have successfully learned this material. To reinforce your knowledge, you can review your flashcards again
         </p>
 
         <div className='flex mt-[32px] gap-x-[91px] lg:gap-x-[105px] lg:mt-[49px]'>

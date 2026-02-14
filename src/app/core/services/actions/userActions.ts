@@ -82,8 +82,9 @@ export const postFlashcardAction = async (
       formData // axios handles headers
     );
     return response.data.data;
-  } catch (error: any) {
-    console.error("Flashcard API error:", error.response?.data || error.message);
+  } catch (error) {
+    // console.error("Flashcard API error:", error.response?.data || error.message);
+    console.error("Flashcard API error:", error);
     throw error;
   }
 };

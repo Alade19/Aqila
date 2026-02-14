@@ -10,7 +10,7 @@ import {
     flashpasteblack,
 } from "../core/lib/utils";
 import Button from './Button';
-import {  useRouter } from "next/navigation";
+// import {  useRouter } from "next/navigation";
 import Loader from './Loader';
 import { useCallback } from 'react';
 import { useMutation } from "@tanstack/react-query";
@@ -25,7 +25,7 @@ import { toast } from "sonner";
 
 export default function FlashCardModal() {
   const { isFlashcardOpen, closeFlashcard } = useModal();
-  const router = useRouter();
+  // const router = useRouter();
 
   const { theme } = useTheme();
   const isDark = theme === 'dark';
