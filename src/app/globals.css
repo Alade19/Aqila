@@ -1,0 +1,405 @@
+@import "tailwindcss";
+
+
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --brand-gradient: linear-gradient(180deg, #0bb9cd 0%, #001f22 100%);
+  --line-height: 120%;
+  --default-transition: 2ms ease-out;
+}
+
+@layer utilities {
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+  }
+
+  .fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-fade {
+    @apply opacity-0;
+    animation: fadeIn 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px); /* optional for a soft upward float */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .bg-brand-gradient {
+    background: var(--brand-gradient);
+  }
+  .full-line-height {
+    line-height: var(--line-height);
+  }
+  @keyframes slide-in-right {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-left {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 1s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 1s ease-out forwards;
+  }
+  
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  .flip-inner.flipped {
+    transform: rotateX(180deg);
+  }
+
+  .flip-front,
+  .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    background-color: white;
+    padding: 1.2rem;
+    box-shadow: 0px 2px 4px 0px #5054541a, 0px 7px 7px 0px #50545417,
+      0px 17px 10px 0px #5054540d, 0px 30px 12px 0px #50545403,
+      0px 46px 13px 0px #50545400;
+  }
+  .dark .flip-front,
+  .dark  .flip-back {
+    background-color: #1E1E1E ;
+    border: 1px solid #ffffff80;
+    box-shadow: 0px 2px 4px 0px #5454541a, 0px 7px 7px 0px #54545417,
+      0px 17px 10px 0px #5454540d, 0px 30px 12px 0px #54545403,
+      0px 47px 13px 0px #54545400;
+  }
+  .flip-back {
+    transform: rotateX(180deg);
+  }
+  .glow-ring {
+    background-color: #ffffff;
+    box-shadow: 0px 12px 32px 0px #0BB9CD14; /* light mode */
+  }
+
+  .dark .glow-ring {
+    box-shadow: 0px 12px 32px 0px #0BB9CD4D; /* dark mode */
+  }
+  
+}
+
+@layer base {
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  input {
+    padding-left: 10px;
+  }
+}
+
+body {
+  font-family: inherit;
+  color: #001f22;
+  /* background-color: #eeeeee; */
+}
+
+.dark body {
+  color: white;
+  /* background-color: #eeeeee; */
+}
+
+.inline-text {
+  color: #303030;
+}
+.dark .inline-text {
+  color: #cdcdcd;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #cccccc57;
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background-color: #cccccc57;
+  border-radius: 10px;
+}
+
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cccccc57 transparent;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 16.8rem 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "sidebar navbar"
+    "sidebar main";
+  transition: all 0.3s ease;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  transition: transform 0.3s ease;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.navbar {
+  grid-area: navbar;
+  display: flex;
+  align-items: center;
+  height: 5.625rem;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 2rem;
+}
+
+.main {
+  grid-area: main;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 2rem 8rem 2rem;
+  height: calc(100vh - 5.625rem);
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.layout {
+  background-color: #eeeeee;
+}
+
+.sidebar,
+.navbar {
+  background-color: #ffffff;
+}
+
+.dark .layout,
+.dark .sidebar,
+.dark .navbar {
+  background-color: #000000;
+}
+
+/* navbar menu icons style */
+
+/* white container */
+
+.white-container {
+  border-radius: 16px;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  box-shadow: 0px 2px 4px 0px #5054541a, 0px 7px 7px 0px #50545417,
+    0px 17px 10px 0px #5054540d, 0px 30px 12px 0px #50545403,
+    0px 46px 13px 0px #50545400;
+}
+
+.white-container-gray {
+  border-radius: 16px;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  box-shadow: 0px 2px 4px 0px #5054541a, 0px 7px 7px 0px #50545417,
+    0px 17px 10px 0px #5054540d, 0px 30px 12px 0px #50545403,
+    0px 46px 13px 0px #50545400;
+}
+
+.white-container-overflow {
+  border-radius: 16px;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  padding-top: 1.5rem;
+  box-shadow: 0px 2px 4px 0px #5054541a, 0px 7px 7px 0px #50545417,
+    0px 17px 10px 0px #5054540d, 0px 30px 12px 0px #50545403,
+    0px 46px 13px 0px #50545400;
+}
+
+.white-container-small {
+  border-radius: 16px;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-shadow: 0px 2px 4px 0px #5054541a, 0px 7px 7px 0px #50545417,
+    0px 17px 10px 0px #5054540d, 0px 30px 12px 0px #50545403,
+    0px 46px 13px 0px #50545400;
+}
+
+.dark .white-container,
+.dark .white-container-small,
+.dark .white-container-overflow {
+  background-color: #1E1E1E ;
+  border: 1px solid #ffffff80;
+  box-shadow: 0px 2px 4px 0px #5454541a, 0px 7px 7px 0px #54545417,
+    0px 17px 10px 0px #5454540d, 0px 30px 12px 0px #54545403,
+    0px 47px 13px 0px #54545400;
+}
+
+.dark .white-container-gray {
+  border: 0.5px solid #ffffff80;
+  background-color: #1e1e1e;
+  box-shadow: 0px 3px 7px 0px #5054541a, 0px 13px 13px 0px #50545417,
+    0px 30px 18px 0px #5054540d, 0px 53px 18px 0px #50545403,
+    0px 83px 23px 0px #50545400;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 1px !important;
+  /* height: 522px !important; */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+  /* padding: 10px; */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+background-color: #CCCCCC !important;
+  /* background-color: green !important; */
+  border-radius: 100px;
+}
+
+.cus-shad{
+  box-shadow: 
+  0px 2px 4px 0px #5054541a,
+  0px 7px 7px 0px #50545417,
+  0px 17px 10px 0px #5054540d,
+  0px 30px 12px 0px #50545403,
+  0px 46px 13px 0px #50545400;
+}
+
+@media (max-width: 767px) {
+  .menubars {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+  }
+
+  .menubar {
+    background-color: #001f22;
+    height: 2px;
+    width: 1.6rem;
+    transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+  }
+  .dark .menubar {
+    background-color: white;
+  }
+
+  .menubar3 {
+    transform: rotate(-45deg) translate(6px, -5px);
+  }
+
+  .menubar1 {
+    transform: rotate(45deg) translate(6px, 5px);
+  }
+
+  .menubar2 {
+    opacity: 0;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas: "navbar" "main";
+  }
+
+  .navbar {
+    z-index: 0;
+    height: 5rem;
+    background-color: #eeeeee;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .sidebar {
+    display: block;
+    position: fixed;
+    z-index: 100;
+    width: 70%;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .sidebar.hide {
+    transform: translateX(-100%);
+  }
+
+  .main {
+    padding: 0.5rem 1rem 10rem 1rem;
+  }
+  .white-container {
+    padding: 0.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg-custom-shadow {
+    box-shadow:
+    0px 2px 5px 0px #5454541A,
+    0px 9px 9px 0px #54545417,
+    0px 19px 12px 0px #5454540D,
+    0px 35px 14px 0px #54545403,
+    0px 54px 15px 0px #54545400;
+  }
+}
